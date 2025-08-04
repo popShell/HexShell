@@ -1,0 +1,277 @@
+/* HexShell Cyberpunk Terminal Styling */
+
+/* Base application styling */
+HexShell {
+    background: #0a0a0a;
+    color: #00ff00;
+}
+
+/* Header styling */
+Header {
+    background: #1a1a1a;
+    color: #00ff00;
+    text-style: bold;
+    height: 3;
+}
+
+/* Main container */
+#main-container {
+    height: 100%;
+    background: #0a0a0a;
+}
+
+/* Panel container */
+#panels {
+    height: 1fr;
+    background: #0a0a0a;
+}
+
+/* Individual panels */
+.panel {
+    border: heavy #00ff00;
+    background: #0f0f0f;
+    padding: 0 1;
+    margin: 0 1;
+}
+
+#left-panel {
+    width: 25%;
+    min-width: 20;
+}
+
+#middle-panel {
+    width: 50%;
+    min-width: 40;
+}
+
+#right-panel {
+    width: 25%;
+    min-width: 30;
+}
+
+/* Panel headers */
+.panel-header {
+    background: #1a1a1a;
+    color: #00ff00;
+    text-style: bold;
+    padding: 1 2;
+    text-align: center;
+    border-bottom: heavy #00ff00;
+}
+
+/* File tree styling */
+#file-tree {
+    background: #0f0f0f;
+    color: #00ff00;
+    scrollbar-color: #00ff00;
+    scrollbar-background: #1a1a1a;
+}
+
+Tree {
+    background: transparent;
+    color: #00ff00;
+}
+
+Tree > .tree--cursor {
+    background: #00ff00;
+    color: #000000;
+}
+
+Tree > .tree--guides {
+    color: #004400;
+}
+
+Tree > .tree--guide-hover {
+    color: #00ff00;
+    text-style: bold;
+}
+
+/* Editor styling */
+#editor {
+    background: #0a0a0a;
+    color: #00ff00;
+    border: none;
+    scrollbar-color: #00ff00;
+    scrollbar-background: #1a1a1a;
+}
+
+TextArea {
+    background: #0a0a0a;
+    color: #00ff00;
+    border: none;
+}
+
+TextArea:focus {
+    border: none;
+}
+
+TextArea .text-area--cursor {
+    background: #00ff00;
+    color: #000000;
+}
+
+TextArea .text-area--selection {
+    background: #00ff00 30%;
+}
+
+/* Command bar styling */
+#command-bar {
+    height: 3;
+    background: #1a1a1a;
+    border-top: heavy #00ff00;
+    padding: 0 2;
+}
+
+#command-input {
+    background: #0a0a0a;
+    color: #00ff00;
+    border: solid #00ff00;
+    width: 100%;
+}
+
+#command-input:focus {
+    border: solid #00ffff;
+}
+
+Input {
+    background: #0a0a0a;
+    color: #00ff00;
+}
+
+Input:focus {
+    border: solid #00ffff;
+}
+
+Input.-invalid {
+    border: solid #ff0000;
+}
+
+Input .input--placeholder {
+    color: #004400;
+}
+
+Input .input--cursor {
+    background: #00ff00;
+    color: #000000;
+}
+
+/* Context display (KSP) styling */
+#context-display {
+    background: #0f0f0f;
+    color: #00ff00;
+    padding: 1;
+}
+
+/* Footer styling */
+Footer {
+    background: #1a1a1a;
+    color: #00ff00;
+}
+
+Footer > .footer--highlight {
+    background: #00ff00;
+    color: #000000;
+}
+
+Footer > .footer--highlight-key {
+    background: #00ff00;
+    color: #000000;
+    text-style: bold;
+}
+
+Footer > .footer--key {
+    background: #1a1a1a;
+    color: #00ffff;
+    text-style: bold;
+}
+
+/* Scrollbar styling */
+.scrollbar-vertical {
+    background: #1a1a1a;
+    color: #00ff00;
+}
+
+.scrollbar-horizontal {
+    background: #1a1a1a;
+    color: #00ff00;
+}
+
+/* Button styling */
+Button {
+    background: #1a1a1a;
+    color: #00ff00;
+    border: solid #00ff00;
+    text-style: bold;
+}
+
+Button:hover {
+    background: #00ff00;
+    color: #000000;
+}
+
+Button:focus {
+    border: solid #00ffff;
+}
+
+Button.-primary {
+    background: #00ff00;
+    color: #000000;
+}
+
+Button.-primary:hover {
+    background: #00ffff;
+    color: #000000;
+}
+
+/* Static text widgets */
+Static {
+    background: transparent;
+    color: #00ff00;
+}
+
+/* Panel styling within Rich renders */
+.rich-panel {
+    border-style: heavy;
+    border-color: #00ff00;
+}
+
+/* Table styling */
+.rich-table {
+    color: #00ff00;
+}
+
+/* Notification/Toast styling */
+Toast {
+    background: #1a1a1a;
+    color: #00ff00;
+    border: heavy #00ff00;
+}
+
+/* Theme variations - can be switched dynamically */
+
+/* Amber theme */
+.theme-amber {
+    --primary: #ffaa00;
+    --primary-dim: #aa6600;
+    --background: #0a0a0a;
+    --background-light: #1a1a1a;
+    --text: #ffaa00;
+}
+
+/* Cyan theme */
+.theme-cyan {
+    --primary: #00ffff;
+    --primary-dim: #006666;
+    --background: #0a0a0a;
+    --background-light: #1a1a1a;
+    --text: #00ffff;
+}
+
+/* Red theme */
+.theme-red {
+    --primary: #ff0066;
+    --primary-dim: #660022;
+    --background: #0a0a0a;
+    --background-light: #1a1a1a;
+    --text: #ff0066;
+}
