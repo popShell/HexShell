@@ -10,7 +10,6 @@ from textual.css.query import NoMatches
 
 
 class ThemeManager:
-    """Manage HexShell visual themes"""
     
     THEMES = {
         "cyberpunk_green": {
@@ -94,22 +93,18 @@ class ThemeManager:
         self.current_theme = "cyberpunk_green"
         
     def get_available_themes(self) -> list:
-        """Get list of available theme names"""
         return list(self.THEMES.keys())
     
     def get_theme(self, theme_name: str) -> Dict[str, Any]:
-        """Get theme configuration"""
         return self.THEMES.get(theme_name, self.THEMES["cyberpunk_green"])
     
     def apply_theme(self, app: App, theme_name: str) -> bool:
-        """Apply a theme to the application"""
         if theme_name not in self.THEMES:
             return False
         
         theme = self.THEMES[theme_name]
         self.current_theme = theme_name
         
-        # Generate CSS variables
         css_vars = f"""
         :root {{
             --primary: {theme['primary']};
@@ -127,14 +122,11 @@ class ThemeManager:
         }}
         """
         
-        # Apply dynamic styling
         self._apply_dynamic_styles(app, theme)
         
         return True
     
     def _apply_dynamic_styles(self, app: App, theme: Dict[str, str]):
-        """Apply theme colors to widgets dynamically"""
-        # Update specific widget styles
         style_updates = {
             "Header": {
                 "background": theme['background_light'],
@@ -172,13 +164,11 @@ class ThemeManager:
             }
         }
         
-        # Apply styles to widgets
         for selector, styles in style_updates.items():
             try:
                 widgets = app.query(selector)
                 for widget in widgets:
                     for style_name, style_value in styles.items():
-                        # Convert style names to widget properties
                         if style_name == "background":
                             widget.styles.background = style_value
                         elif style_name == "color":
@@ -190,7 +180,6 @@ class ThemeManager:
                         elif style_name == "border-top":
                             widget.styles.border_top = style_value
             except NoMatches:
-                # Selector didn't match any widgets
                 pass
     
     def get_ascii_art_for_theme(self, theme_name: str) -> str:

@@ -9,14 +9,11 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
-
 # Configuration
 HEXSHELL_HOME="${HEXSHELL_HOME:-$HOME/.hexshell}"
 CONFIG_FILE="$HEXSHELL_HOME/config.yaml"
 VENV_PATH="$HEXSHELL_HOME/venv"
-SRC_PATH="$PROJECT_ROOT/src"
+SRC_PATH="$(dirname "$(readlink -f "$0")")/../src"
 
 mkdir -p "$HEXSHELL_HOME"
 
@@ -203,6 +200,7 @@ main() {
     setup_venv
     check_tmux
     
+    # Generate unique session name
     HEXSHELL_SESSION="hexshell-$$"
     export HEXSHELL_SESSION
     
@@ -210,12 +208,9 @@ main() {
     
     tmux new-session -d -s "$HEXSHELL_SESSION" -n "HexShell"
     
-    tmux send-keys -t "$HEXSHELL_SESSION" "cd '$PROJECT_ROOT'" C-m
-    tmux send-keys -t "$HEXSHELL_SESSION" "source '$VENV_PATH/bin/activate'" C-m
-    tmux send-keys -t "$HEXSHELL_SESSION" "export PYTHONPATH='$SRC_PATH:\$PYTHONPATH'" C-m
+    tmux send-keys -t "$HEXSHELL_SESSION" "cd $SRC_PATH" C-m
+    tmux send-keys -t "$HEXSHELL_SESSION" "source $VENV_PATH/bin/activate" C-m
     tmux send-keys -t "$HEXSHELL_SESSION" "python -m hexshell.main" C-m
-    
-    sleep 0.5
     
     tmux attach-session -t "$HEXSHELL_SESSION"
 }

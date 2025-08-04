@@ -28,7 +28,7 @@ class MarkdownEditor(TextArea):
     
     # Markdown syntax patterns for basic highlighting
     MARKDOWN_PATTERNS = {
-        'heading': r'^#{1,6}\s.*,
+        'heading': r'^#{1,6}\s.*$',
         'bold': r'\*\*[^*]+\*\*|__[^_]+__',
         'italic': r'\*[^*]+\*|_[^_]+_',
         'code': r'`[^`]+`',
@@ -36,8 +36,8 @@ class MarkdownEditor(TextArea):
         'link': r'\[([^\]]+)\]\(([^)]+)\)',
         'list': r'^[\s]*[-*+]\s',
         'numbered_list': r'^[\s]*\d+\.\s',
-        'blockquote': r'^>\s.*,
-        'horizontal_rule': r'^---+$|^\*\*\*+,
+        'blockquote': r'^>\s.*$',
+        'horizontal_rule': r'^---+$|^\*\*\*+$',
     }
     
     def __init__(self, **kwargs):
@@ -46,30 +46,24 @@ class MarkdownEditor(TextArea):
         self.modified = False
         self.vim_mode = "insert"  # Start in insert mode for ease of use
         
-        # Configure TextArea
         self.show_line_numbers = True
         self.language = "markdown"
         self.theme = "monokai"
         
     def set_content(self, content: str, file_path: Optional[Path] = None):
-        """Set editor content and optional file path"""
         self.clear()
         self.insert(content)
         self.file_path = file_path
         self.modified = False
         
-        # Move cursor to beginning
         self.cursor_location = (0, 0)
         
     def get_content(self) -> str:
-        """Get the current editor content"""
         return self.text
     
     def on_text_changed(self, event):
-        """Mark as modified when text changes"""
         self.modified = True
         
-        # Update header to show modified status
         if self.file_path:
             header = self.parent.query_one("#editor-header")
             if header:
@@ -77,14 +71,12 @@ class MarkdownEditor(TextArea):
                 header.update(f"📝 EDITOR - {file_name} {'*' if self.modified else ''}")
     
     def action_save(self):
-        """Save the current file"""
         if self.file_path and self.modified:
             try:
                 self.file_path.write_text(self.text)
                 self.modified = False
                 self.notify("File saved!", severity="information")
                 
-                # Update header
                 header = self.parent.query_one("#editor-header")
                 if header:
                     header.update(f"📝 EDITOR - {self.file_path.name}")
@@ -95,19 +87,16 @@ class MarkdownEditor(TextArea):
             self.notify("No file open to save", severity="warning")
     
     def action_normal_mode(self):
-        """Switch to vim normal mode"""
         self.vim_mode = "normal"
         self.read_only = True
         self.notify("-- NORMAL --", severity="information")
     
     def action_insert_mode(self):
-        """Switch to vim insert mode"""
         self.vim_mode = "insert"
         self.read_only = False
         self.notify("-- INSERT --", severity="information")
     
     def insert_template(self, template_name: str):
-        """Insert a template at cursor position"""
         templates = {
             "ksp_mission": """# KSP Mission: [Mission Name]
 
@@ -266,6 +255,5 @@ Scope: [IP ranges/domains]
         self.insert(template_content)
     
     def toggle_markdown_preview(self):
-        """Toggle between edit and preview mode"""
         # TODO: Implement markdown preview
         self.notify("Markdown preview not yet implemented", severity="warning")

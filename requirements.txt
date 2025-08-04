@@ -1,6 +1,6 @@
 # HexShell Requirements
 # Core TUI framework
-textual>=0.40.0
+textual-dev>=1.7.0
 
 # File watching
 watchdog>=3.0.0
