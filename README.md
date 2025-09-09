@@ -129,7 +129,7 @@ profiles:
     templates: ["ksp_mission", "vessel_design", "factorio_blueprint"]
 ```
 
-### Available Themes
+### Available Themes (WIP)
 
 - `cyberpunk_green` - Classic green terminal
 - `cyberpunk_amber` - Warm amber glow

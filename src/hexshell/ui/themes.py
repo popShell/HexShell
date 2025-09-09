@@ -183,7 +183,6 @@ class ThemeManager:
                 pass
     
     def get_ascii_art_for_theme(self, theme_name: str) -> str:
-        """Get theme-specific ASCII art for boot sequence"""
         ascii_arts = {
             "cyberpunk_green": """
     ░█▀▀░█░█░█▀▄░█▀▀░█▀▄░█▀█░█░█░█▀█░█░█
