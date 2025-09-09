@@ -1,0 +1,17 @@
+# Python-specific ignores
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# IDE/System-specific ignores
+.vscode/
+.DS_Store
+
+*.bak
+
+*.txt
+!requirements.txt

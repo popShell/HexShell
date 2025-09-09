@@ -1,0 +1,97 @@
+/* HexShell CSS - Textual Compatible */
+
+/* Base screen */
+Screen {
+    background: #0a0a0a;
+}
+
+/* Header */
+Header {
+    background: #1a1a1a;
+    color: #00ff00;
+    height: 3;
+}
+
+/* Main container */
+#main-container {
+    height: 100%;
+}
+
+/* Panels container */
+#panels {
+    height: 1fr;
+}
+
+/* Panel sizing */
+#left-panel {
+    width: 1fr;
+}
+
+#middle-panel {
+    width: 2fr;
+}
+
+#right-panel {
+    width: 1fr;
+}
+
+/* Panel styling */
+.panel {
+    border: solid #00ff00;
+    padding: 1;
+}
+
+.panel-header {
+    background: #1a1a1a;
+    color: #00ff00;
+    padding: 1;
+    height: 3;
+}
+
+/* Tree widget */
+Tree {
+    background: #0f0f0f;
+    color: #00ff00;
+}
+
+/* TextArea */
+TextArea {
+    background: #0a0a0a;
+    color: #00ff00;
+}
+
+/* Input */
+Input {
+    background: #0a0a0a;
+    color: #00ff00;
+    border: solid #00ff00;
+}
+
+/* Command bar */
+#command-bar {
+    height: 3;
+    background: #1a1a1a;
+}
+
+/* Footer */
+Footer {
+    background: #1a1a1a;
+    color: #00ff00;
+}
+
+/* Button */
+Button {
+    background: #1a1a1a;
+    color: #00ff00;
+    border: solid #00ff00;
+}
+
+Button:hover {
+    background: #00ff00;
+    color: #000000;
+}
+
+/* Static */
+Static {
+    color: #00ff00;
+}
